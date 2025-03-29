@@ -1,0 +1,50 @@
+{
+  "pins" : [
+    {
+      "identity" : "marqueelabel",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/cbpowell/MarqueeLabel",
+      "state" : {
+        "revision" : "f2c72a5f8568579dade6350dc26a482076d3d346",
+        "version" : "4.3.0"
+      }
+    },
+    {
+      "identity" : "notificationbanner",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Daltron/NotificationBanner",
+      "state" : {
+        "revision" : "a9ec5cd29b4669f5fdf3dcd494a08cea4776913c",
+        "version" : "3.2.0"
+      }
+    },
+    {
+      "identity" : "rxkeyboard",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/RxSwiftCommunity/RxKeyboard",
+      "state" : {
+        "revision" : "63f6377975c962a1d89f012a6f1e5bebb2c502b7",
+        "version" : "2.0.1"
+      }
+    },
+    {
+      "identity" : "rxswift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ReactiveX/RxSwift.git",
+      "state" : {
+        "revision" : "b4307ba0b6425c0ba4178e138799946c3da594f8",
+        "version" : "6.5.0"
+      }
+    },
+    {
+      "identity" : "snapkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SnapKit/SnapKit",
+      "state" : {
+        "revision" : "f222cbdf325885926566172f6f5f06af95473158",
+        "version" : "5.6.0"
+      }
+    }
+  ],
+  "version" : 2
+}
