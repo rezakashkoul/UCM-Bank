@@ -161,7 +161,9 @@ extension ValidationRule {
     }
     
     func isValidPayeeID(id: String, shouldShowError: Bool = true)-> Bool {
-        let isValid = 1...11 ~= id.count && id != "0"
+        let regex = "^[0-9]*$"
+        let title = NSPredicate(format: "SELF MATCHES %@", regex)
+        let isValid = title.evaluate(with: id) && 1...11 ~= id.count && id != "0"
         if isValid {
             return true
         } else {

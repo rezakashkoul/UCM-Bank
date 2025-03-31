@@ -32,6 +32,7 @@
 		EBA1B1B929E73F41004CEEC7 /* AddAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA1B1B829E73F41004CEEC7 /* AddAccountViewController.swift */; };
 		EBB6FE1B29E9B7D8000B5BDC /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB6FE1929E9B7D8000B5BDC /* CollectionViewCell.swift */; };
 		EBB6FE1C29E9B7D8000B5BDC /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBB6FE1A29E9B7D8000B5BDC /* CollectionViewCell.xib */; };
+		F74FB6F92D99041700B571BF /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74FB6F82D9903FF00B571BF /* DatabaseManager.swift */; };
 		F762EDBF29BA0676001D8490 /* NotificationBannerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F762EDBE29BA0676001D8490 /* NotificationBannerSwift */; };
 		F762EDC129BA077E001D8490 /* ValidationRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = F762EDC029BA077E001D8490 /* ValidationRules.swift */; };
 		F762EDC729BA285C001D8490 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F762EDC629BA285C001D8490 /* DashboardViewController.swift */; };
@@ -70,6 +71,7 @@
 		EBA1B1B829E73F41004CEEC7 /* AddAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountViewController.swift; sourceTree = "<group>"; };
 		EBB6FE1929E9B7D8000B5BDC /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		EBB6FE1A29E9B7D8000B5BDC /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
+		F74FB6F82D9903FF00B571BF /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		F762EDC029BA077E001D8490 /* ValidationRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationRules.swift; sourceTree = "<group>"; };
 		F762EDC629BA285C001D8490 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		F77262492D979F09003018DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 			children = (
 				EB67973E29E8A4500014E27B /* Network Model.swift */,
 				EB67973F29E8A4500014E27B /* NetworkManager.swift */,
+				F74FB6F82D9903FF00B571BF /* DatabaseManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 				EB67972F29E8431C0014E27B /* TableViewCell.swift in Sources */,
 				EBB6FE1B29E9B7D8000B5BDC /* CollectionViewCell.swift in Sources */,
 				EB172C1B29F34892000B3539 /* LoadingViewController.swift in Sources */,
+				F74FB6F92D99041700B571BF /* DatabaseManager.swift in Sources */,
 				F762EDC729BA285C001D8490 /* DashboardViewController.swift in Sources */,
 				F7877C7329B919AA00272DF4 /* AppDelegate.swift in Sources */,
 				EBA0270F29F20DF2004931D2 /* Currency.swift in Sources */,

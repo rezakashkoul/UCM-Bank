@@ -12,7 +12,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" customModule="Atlas_Bank" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" customModule="UCM_Bank" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -172,7 +172,7 @@
         <!--Security Question View Controller-->
         <scene sceneID="189-gf-koU">
             <objects>
-                <viewController storyboardIdentifier="SecurityQuestionViewController" id="fj3-mf-hrk" customClass="SecurityQuestionViewController" customModule="Atlas_Bank" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SecurityQuestionViewController" id="fj3-mf-hrk" customClass="SecurityQuestionViewController" customModule="UCM_Bank" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eUJ-5f-IXm">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -316,7 +316,7 @@
         <!--Dashboard-->
         <scene sceneID="KlA-WE-V1K">
             <objects>
-                <viewController storyboardIdentifier="DashboardViewController" id="DXK-st-vjB" customClass="DashboardViewController" customModule="Atlas_Bank" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DashboardViewController" id="DXK-st-vjB" customClass="DashboardViewController" customModule="UCM_Bank" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Msk-Ri-6TB">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -441,7 +441,7 @@
         <!--Change Password View Controller-->
         <scene sceneID="Two-wn-viq">
             <objects>
-                <viewController storyboardIdentifier="ChangePasswordViewController" id="B1E-2S-wPZ" customClass="ChangePasswordViewController" customModule="Atlas_Bank" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChangePasswordViewController" id="B1E-2S-wPZ" customClass="ChangePasswordViewController" customModule="UCM_Bank" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cfP-2I-EQ1">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -550,7 +550,7 @@
         <!--Register View Controller-->
         <scene sceneID="4OS-7m-Te8">
             <objects>
-                <viewController storyboardIdentifier="RegisterViewController" id="PZ5-co-Z2q" customClass="RegisterViewController" customModule="Atlas_Bank" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegisterViewController" id="PZ5-co-Z2q" customClass="RegisterViewController" customModule="UCM_Bank" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GUJ-FM-juo">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -744,7 +744,7 @@
         <!--Add Account View Controller-->
         <scene sceneID="wGF-Zb-XId">
             <objects>
-                <viewController storyboardIdentifier="AddAccountViewController" id="H6S-RV-bdM" customClass="AddAccountViewController" customModule="Atlas_Bank" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddAccountViewController" id="H6S-RV-bdM" customClass="AddAccountViewController" customModule="UCM_Bank" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w2c-gl-YSj">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -929,7 +929,7 @@
         <!--Payee-->
         <scene sceneID="fCz-G1-nb3">
             <objects>
-                <viewController storyboardIdentifier="PayeeViewController" id="Iyp-kn-DKh" customClass="PayeeViewController" customModule="Atlas_Bank" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PayeeViewController" id="Iyp-kn-DKh" customClass="PayeeViewController" customModule="UCM_Bank" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jdX-GV-mi7">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1029,7 +1029,7 @@
         <!--Bill-->
         <scene sceneID="14C-XY-N2L">
             <objects>
-                <viewController storyboardIdentifier="BillViewController" id="54L-1I-3NC" customClass="BillViewController" customModule="Atlas_Bank" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BillViewController" id="54L-1I-3NC" customClass="BillViewController" customModule="UCM_Bank" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6Q5-oj-bQ1">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1095,7 +1095,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="uMQ-uh-yuo">
                                                 <rect key="frame" x="0.0" y="176.66666666666666" width="353" height="70.333333333333343"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Bank Canadian Bank Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rGg-ki-EMN">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Bank American Bank Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rGg-ki-EMN">
                                                         <rect key="frame" x="0.0" y="0.0" width="353" height="20.333333333333332"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
@@ -1189,7 +1189,7 @@
         <!--Transfer-->
         <scene sceneID="4Wp-3W-t6i">
             <objects>
-                <viewController storyboardIdentifier="TransferMoneyViewController" id="9iB-hL-iOR" customClass="TransferMoneyViewController" customModule="Atlas_Bank" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TransferMoneyViewController" id="9iB-hL-iOR" customClass="TransferMoneyViewController" customModule="UCM_Bank" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jhw-Xp-alt">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1341,13 +1341,13 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemPinkColor">
-            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

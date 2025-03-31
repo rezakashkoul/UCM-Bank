@@ -226,7 +226,6 @@ private extension RegisterViewController {
     }
     
     private func setUser() {
-        
         currentUser?.personalInfo.username = usernameTextField.text!.lowercased()
         currentUser?.personalInfo.password = passwordTextField.text!
         currentUser?.personalInfo.firstName = firstNameTextField.text!

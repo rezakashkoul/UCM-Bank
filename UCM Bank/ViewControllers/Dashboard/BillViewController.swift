@@ -103,7 +103,7 @@ private extension BillViewController {
         payeeAccountNumberTextField.isUserInteractionEnabled = false
         payeeNameTextField.placeholder = "Please choose one payee"
         payeeAccountNumberTextField.placeholder = "This will set automatically"
-        userBankAccountTextField.placeholder = "Please enter a Canadian account number"
+        userBankAccountTextField.placeholder = "Please enter a American bank account number"
         amountTextField.placeholder = "Please set the bill amount"
         amountTextField.text = ""
         payeeNameTextField.text = ""
@@ -124,8 +124,8 @@ extension BillViewController: UIPickerViewDelegate, UIPickerViewDataSource {
             if pickerView == payeeNamePickerView {
                 return currentUser.payees.count
             } else if pickerView == userBankAccountPickerView {
-                let canadianAccounts = currentUser.accounts.filter({$0.id.last?.description == "0"})
-                return canadianAccounts.count
+                let americanAccounts = currentUser.accounts.filter({$0.id.last?.description == "1"})
+                return americanAccounts.count
             }
         }
         return 0
@@ -136,8 +136,8 @@ extension BillViewController: UIPickerViewDelegate, UIPickerViewDataSource {
             if pickerView == payeeNamePickerView {
                 return currentUser.payees[row].title
             } else if pickerView == userBankAccountPickerView {
-                let canadianAccounts = currentUser.accounts.filter({$0.id.last?.description == "0"})
-                return canadianAccounts[row].id
+                let americanAccounts = currentUser.accounts.filter({$0.id.last?.description == "1"})
+                return americanAccounts[row].id
             }
         }
         return nil
@@ -149,11 +149,11 @@ extension BillViewController: UIPickerViewDelegate, UIPickerViewDataSource {
                 payeeNameTextField.text = currentUser.payees[row].title
                 payeeAccountNumberTextField.text = currentUser.payees[row].id
             } else if pickerView == userBankAccountPickerView {
-                let canadianAccounts = currentUser.accounts.filter({$0.id.last?.description == "0"})
-                if !canadianAccounts.isEmpty {
-                    userBankAccountTextField.text = canadianAccounts[row].id
+                let americanAccounts = currentUser.accounts.filter({$0.id.last?.description == "1"})
+                if !americanAccounts.isEmpty {
+                    userBankAccountTextField.text = americanAccounts[row].id
                 } else {
-                    AlertManager.shared.showAlert(parent: self, title: "No Canadian account", body: "Please add one if you want to pay your bills", buttonTitles: ["Create one"]) { [self] buttonIndex in
+                    AlertManager.shared.showAlert(parent: self, title: "No American account", body: "Please add one if you want to pay your bills", buttonTitles: ["Create one"]) { [self] buttonIndex in
                         if buttonIndex == 0 {
                             showCreateAccount()
                         }
@@ -168,23 +168,23 @@ extension BillViewController: UIPickerViewDelegate, UIPickerViewDataSource {
 extension BillViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        let canadianAccounts = currentUser?.accounts.filter({$0.id.last?.description == "0"})
+        let americanAccounts = currentUser?.accounts.filter({$0.id.last?.description == "1"})
         
         if textField == payeeNameTextField && textField.text == "" {
             if let payees = currentUser?.payees, payees.count > 0 {
                 textField.text = payees[0].title
                 payeeAccountNumberTextField.text = currentUser?.payees[0].id
             }
-        } else if textField == userBankAccountTextField && textField.text == "" && canadianAccounts == [] {
+        } else if textField == userBankAccountTextField && textField.text == "" && americanAccounts == [] {
             view.endEditing(true)
-            AlertManager.shared.showAlert(parent: self, title: "No Canadian account", body: "Please add one if you want to pay your bills", buttonTitles: ["Create one"], style: .alert) { [self] buttonIndex in
+            AlertManager.shared.showAlert(parent: self, title: "No American account", body: "Please add one if you want to pay your bills", buttonTitles: ["Create one"], style: .alert) { [self] buttonIndex in
                 if buttonIndex == 0 {
                     showCreateAccount()
                 }
             }
         } else if textField == userBankAccountTextField && textField.text == "" {
             if let payees = currentUser?.payees, payees.count > 0 {
-                textField.text = canadianAccounts?[0].id
+                textField.text = americanAccounts?[0].id
             }
         }
     }
@@ -250,14 +250,14 @@ private extension BillViewController {
             BannerManager.showMessage(messageText: "Error!", messageSubtitle: "Please fill all fields", style: .danger)
             return false
         }
-        let isCanadianAccount = userBankAccountTextField.text!.last?.description == "0"
+        let isAmericanAccounts = userBankAccountTextField.text!.last?.description == "1"
         let isAmountValid = ValidationRule.amount.isValidAmount(text: amountTextField.text!)
-        let isBankAccountValid = ValidationRule.bankID.isValidBankID(id: userBankAccountTextField.text!) && isCanadianAccount
+        let isBankAccountValid = ValidationRule.bankID.isValidBankID(id: userBankAccountTextField.text!) && isAmericanAccounts
         
         if isBankAccountValid && isAmountValid && !payeeNameTextField.text!.isEmpty && !payeeAccountNumberTextField.text!.isEmpty {
             return true
-        } else if !isCanadianAccount && !userBankAccountTextField.text!.isEmpty {
-            BannerManager.showMessage(messageText: "Error", messageSubtitle: "Please only use Canadian account", style: .danger)
+        } else if !isAmericanAccounts && !userBankAccountTextField.text!.isEmpty {
+            BannerManager.showMessage(messageText: "Error", messageSubtitle: "Please only use American account", style: .danger)
             return false
         }
         return false
