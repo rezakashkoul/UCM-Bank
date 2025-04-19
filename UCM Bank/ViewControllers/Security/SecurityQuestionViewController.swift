@@ -7,90 +7,64 @@ protocol SecurityQuestionViewControllerDelegate: AnyObject {
 }
 
 class SecurityQuestionViewController: UIViewController {
-    
+
     @IBOutlet weak var scrollView: UIScrollView!
-    
     @IBOutlet weak var usernameStackView: UIStackView!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var question1TextField: UITextField!
     @IBOutlet weak var question2TextField: UITextField!
     @IBOutlet weak var question3TextField: UITextField!
-    
     @IBOutlet weak var submitButtonBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var submitButton: UIButton!
+
+    var disposeBag = DisposeBag()
+    var textFields: [UITextField]!
+    var isUserSigningUp: Bool = false
+    var username: String = "" // ✅ به صورت مستقیم از ContinueSignupViewController ست می‌شود
+    weak var delegate: SecurityQuestionViewControllerDelegate?
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupViews()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        scrollView.slideUpViews(delay: 0.1)
+    }
+
     @IBAction func submitButtonAction(_ sender: Any) {
         submitAction()
     }
-    
-    weak var delegate: SecurityQuestionViewControllerDelegate?
-    var disposeBag = DisposeBag()
-    var textFields: [UITextField]!
-    var isUserRegistering: Bool = false
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        setupViews()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        scrollView.slideUpViews(delay: 0.1)
-    }
-    
 }
 
-//MARK: - Setup Views
-extension SecurityQuestionViewController {
-    
+// MARK: - Setup
+private extension SecurityQuestionViewController {
     func setupViews() {
         handleKeyboardVisibility()
         setupTextFields()
         submitButton.dropShadowAndCornerRadius(.regular)
-        usernameStackView.isHidden = isUserRegistering ? true : false
+        usernameStackView.isHidden = isUserSigningUp
+        if isUserSigningUp {
+            usernameTextField.text = username
+            usernameTextField.isEnabled = false
+        }
     }
-    
+
     func setupTextFields() {
-        textFields = view.getTextfields(view)
-        textFields.forEach({$0.delegate = self})
-        textFields.forEach({$0.addDoneToolbar()})
+        textFields = [usernameTextField, question1TextField, question2TextField, question3TextField]
+        textFields.forEach {
+            $0.delegate = self
+            $0.addDoneToolbar()
+        }
         usernameTextField.becomeFirstResponder()
     }
-}
 
-//MARK: - TextField Functions
-extension SecurityQuestionViewController: UITextFieldDelegate {
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        switch textField {
-        case usernameTextField:
-            question1TextField.becomeFirstResponder()
-        case question1TextField:
-            question2TextField.becomeFirstResponder()
-        case question2TextField:
-            question3TextField.becomeFirstResponder()
-        case question3TextField:
-            question3TextField.resignFirstResponder()
-            submitAction()
-        default: break
-        }
-        return true
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
-    }
-}
-
-//MARK: - Keyboard Functions
-private extension SecurityQuestionViewController {
-    
     func handleKeyboardVisibility() {
         RxKeyboard.instance.visibleHeight
-            .drive(onNext: { [weak self] keyboardVisibleHeight in
+            .drive(onNext: { [weak self] height in
                 guard let self = self else { return }
-                self.submitButtonBottomConstraint.constant = (keyboardVisibleHeight == 0) ? 20 : keyboardVisibleHeight
+                self.submitButtonBottomConstraint.constant = height == 0 ? 20 : height
                 UIView.animate(withDuration: 0.3) {
                     self.view.layoutIfNeeded()
                 } completion: { _ in
@@ -98,56 +72,84 @@ private extension SecurityQuestionViewController {
                 }
             }).disposed(by: disposeBag)
     }
-}
 
-//MARK: - Actions
-private extension SecurityQuestionViewController {
-    
     func submitAction() {
-        let text1 = question1TextField.text ?? ""
-        let text2 = question2TextField.text ?? ""
-        let text3 = question3TextField.text ?? ""
-        if !text1.isEmpty && !text2.isEmpty && !text3.isEmpty {
-            let securityAnswers = [SecurityAnswer(answer: text1), SecurityAnswer(answer: text2), SecurityAnswer(answer: text3)]
-            if isUserRegistering {
-                currentUser?.personalInfo.securityAnswers = securityAnswers
-                allUsers.append(currentUser!)
-                UserDefaults.standard.saveUsers()
-                print("user is \(String(describing: currentUser))")
-                print("Account successfully created.")
-                showLoginViewController()
-                currentUser = nil
-                BannerManager.showMessage(messageText: "Success", messageSubtitle: "You're account created successfully.", style: .success)
-            } else {
-                let username = usernameTextField.text?.lowercased() ?? ""
-                for i in 0..<allUsers.count {
-                    if allUsers[i].personalInfo.username.lowercased() == username && allUsers[i].personalInfo.securityAnswers == securityAnswers {
-                        currentUser = allUsers[i]
-                        showChangePasswordViewController()
-                        return
-                    }
-                }
-                BannerManager.showMessage(messageText: "Incorrect", messageSubtitle: "Pleas think twice", style: .danger)
-            }
-        } else {
-            BannerManager.showMessage(messageText: "Error!", messageSubtitle: "Please fill all fields", style: .danger)
+        let enteredUsername = usernameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines).lowercased() ?? ""
+        let actualUsername = isUserSigningUp ? username : enteredUsername
+
+        let answer1 = question1TextField.text ?? ""
+        let answer2 = question2TextField.text ?? ""
+        let answer3 = question3TextField.text ?? ""
+
+        guard !actualUsername.isEmpty, !answer1.isEmpty, !answer2.isEmpty, !answer3.isEmpty else {
+            BannerManager.showMessage(messageText: "Error!", messageSubtitle: "Please fill all fields.", style: .danger)
+            return
         }
+
+        if isUserSigningUp {
+            submitSecurityQuestions(username: actualUsername, answer1: answer1, answer2: answer2, answer3: answer3)
+        } else {
+            NetworkManager.shared.checkUsernameExists(actualUsername) { [weak self] exists in
+                guard let self = self else { return }
+                if !exists {
+                    BannerManager.showMessage(messageText: "Error", messageSubtitle: "Username does not exist!", style: .danger)
+                    return
+                }
+
+                // 🔒 Backend answer verification should be here
+                DispatchQueue.main.async {
+                    self.showChangePasswordViewController()
+                }
+            }
+        }
+    }
+
+    func submitSecurityQuestions(username: String, answer1: String, answer2: String, answer3: String) {
+        NetworkManager.shared.setSecurityQuestions(username: username, answer1: answer1, answer2: answer2, answer3: answer3) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let success):
+                    if success {
+                        BannerManager.showMessage(messageText: "Success", messageSubtitle: "Security questions saved.", style: .success)
+                        self.showLoginViewController()
+                    } else {
+                        BannerManager.showMessage(messageText: "Error", messageSubtitle: "Unexpected failure saving questions.", style: .danger)
+                    }
+                case .failure(let error):
+                    BannerManager.showMessage(messageText: "Error", messageSubtitle: error.localizedDescription, style: .danger)
+                }
+            }
+        }
+    }
+
+    func showChangePasswordViewController() {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "ChangePasswordViewController") as? ChangePasswordViewController else { return }
+        vc.isModalInPresentation = true
+        present(vc, animated: true)
+    }
+
+    func showLoginViewController() {
+        delegate?.setUsername(username)
+        navigationController?.popToRootViewController(animated: true)
     }
 }
 
-//MARK: - Navigation Functions
-extension SecurityQuestionViewController {
-    
-    func showChangePasswordViewController() {
-        let viewController = storyboard?.instantiateViewController(withIdentifier: "ChangePasswordViewController") as! ChangePasswordViewController
-        viewController.isModalInPresentation = true
-        present(viewController, animated: true)
-    }
-    
-    func showLoginViewController() {
-        if let user = currentUser {
-            delegate?.setUsername(user.personalInfo.username)
+// MARK: - UITextFieldDelegate
+extension SecurityQuestionViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case usernameTextField: question1TextField.becomeFirstResponder()
+        case question1TextField: question2TextField.becomeFirstResponder()
+        case question2TextField: question3TextField.becomeFirstResponder()
+        case question3TextField:
+            textField.resignFirstResponder()
+            submitAction()
+        default: break
         }
-        navigationController?.popToRootViewController(animated: true)
+        return true
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
 }

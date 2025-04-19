@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-ucmbankapp-dev-fb2ab-authRole",
+      "UnauthRoleArn": "arn:aws:iam::825765390368:role/amplify-ucmbankapp-dev-fb2ab-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::825765390368:role/amplify-ucmbankapp-dev-fb2ab-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-ucmbankapp-dev-fb2ab-deployment",
+      "UnauthRoleName": "amplify-ucmbankapp-dev-fb2ab-unauthRole",
+      "StackName": "amplify-ucmbankapp-dev-fb2ab",
+      "StackId": "arn:aws:cloudformation:us-east-2:825765390368:stack/amplify-ucmbankapp-dev-fb2ab/f16e20b0-19a5-11f0-83b9-061edf760cbd",
+      "AmplifyAppId": "d1d98p0byczhzd"
+    },
+    "categories": {
+      "auth": {
+        "ucmbankappd4133437": {}
+      }
+    }
+  }
+}

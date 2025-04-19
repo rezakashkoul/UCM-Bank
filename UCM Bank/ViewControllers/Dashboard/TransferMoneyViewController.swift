@@ -226,44 +226,44 @@ private extension TransferMoneyViewController {
                 let receiverInfo = (destinationUser?.personalInfo.firstName ?? "?") + " " + (destinationUser?.personalInfo.lastName ?? "??")
                 let senderInfo = (currentUser?.personalInfo.firstName ?? "?") + " " + (currentUser?.personalInfo.lastName ?? "??")
                 
-                NetworkManager.shared.getExchangeRate { [self] result in
-                    
-                    switch result {
-                    case .success(let newExchangeRate):
-                        dismissLoading(loadingVC: loadingVC)
-                        
-                        let exchangeRate = calculateExchangeRate(onlineExchangeRatio: newExchangeRate, originCurrency: originAccount!.currency, destinationCurrency: receiverAccount.currency)
-                        let exchangedAmount = (baseAmount * exchangeRate).roundToDecimal(2)
-                        
-                        print("exchange rates are:\(String(describing: newExchangeRate))")
-                        
-                        let outcomeTransaction = Transaction(date: Date(), amount: baseAmount, type: .outcome, reason: .transfer, id: transactionID, receiver: TransactionReceiver(title: receiverAccount.title + " " + receiverInfo, id: receiverAccount.id))
-                        
-                        let incomeTransaction = Transaction(date: Date(), amount: exchangedAmount, type: .income, reason: .transfer, id: transactionID, receiver: TransactionReceiver(title: senderInfo, id: originAccountID))
-                        
-                        showTransactionPromptAlert(amount: baseAmount, senderCurrency: originAccount?.currency ?? .none, receiverCurrency: receiverAccount.currency, receiverInfo: receiverInfo, receiverID: destinationAccountID, exchangedAmount: exchangedAmount, exchangeRatio: exchangeRate) { [self] buttonIndex in
-                            if buttonIndex == 0 {
-                                
-                                setIncomeTransaction(receiverID: destinationAccountID, newBalance: exchangedAmount, transaction: incomeTransaction)
-                                setOutcomeTransaction(originAccountID: originAccountID, newBalance: newBalance, transaction: outcomeTransaction)
-                                
-                                UserDefaults.standard.saveUsers()
-                                
-                                BannerManager.showMessage(messageText: "Success!", messageSubtitle: "The transaction submitted successfully. \n You can check it in Dashboard tab", style: .success)
-                                showDashboardViewController()
-                            } else {
-                                BannerManager.showMessage(messageText: "Canceled", messageSubtitle: "Your Transaction canceled.", style: .danger)
-                            }
-                        }
-                        
-                    case .failure(let error):
-                        
-                        dismissLoading(loadingVC: loadingVC)
-                        BannerManager.showMessage(messageText: "Error", messageSubtitle: "Can not get the current exchange ratio, please try again", style: .danger)
-                        print("Error: ", error.localizedDescription)
-                        return
-                    }
-                }
+//                NetworkManager.shared.fetchExchangeRates { [self] result in
+//                    
+//                    switch result {
+//                    case .success(let newExchangeRate):
+//                        dismissLoading(loadingVC: loadingVC)
+//                        
+//                        let exchangeRate = calculateExchangeRate(onlineExchangeRatio: newExchangeRate, originCurrency: originAccount!.currency, destinationCurrency: receiverAccount.currency)
+//                        let exchangedAmount = (baseAmount * exchangeRate).roundToDecimal(2)
+//                        
+//                        print("exchange rates are:\(String(describing: newExchangeRate))")
+//                        
+//                        let outcomeTransaction = Transaction(date: Date(), amount: baseAmount, type: .outcome, reason: .transfer, id: transactionID, receiver: TransactionReceiver(title: receiverAccount.title + " " + receiverInfo, id: receiverAccount.id))
+//                        
+//                        let incomeTransaction = Transaction(date: Date(), amount: exchangedAmount, type: .income, reason: .transfer, id: transactionID, receiver: TransactionReceiver(title: senderInfo, id: originAccountID))
+//                        
+//                        showTransactionPromptAlert(amount: baseAmount, senderCurrency: originAccount?.currency ?? .none, receiverCurrency: receiverAccount.currency, receiverInfo: receiverInfo, receiverID: destinationAccountID, exchangedAmount: exchangedAmount, exchangeRatio: exchangeRate) { [self] buttonIndex in
+//                            if buttonIndex == 0 {
+//                                
+//                                setIncomeTransaction(receiverID: destinationAccountID, newBalance: exchangedAmount, transaction: incomeTransaction)
+//                                setOutcomeTransaction(originAccountID: originAccountID, newBalance: newBalance, transaction: outcomeTransaction)
+//                                
+//                                UserDefaults.standard.saveUsers()
+//                                
+//                                BannerManager.showMessage(messageText: "Success!", messageSubtitle: "The transaction submitted successfully. \n You can check it in Dashboard tab", style: .success)
+//                                showDashboardViewController()
+//                            } else {
+//                                BannerManager.showMessage(messageText: "Canceled", messageSubtitle: "Your Transaction canceled.", style: .danger)
+//                            }
+//                        }
+//                        
+//                    case .failure(let error):
+//                        
+//                        dismissLoading(loadingVC: loadingVC)
+//                        BannerManager.showMessage(messageText: "Error", messageSubtitle: "Can not get the current exchange ratio, please try again", style: .danger)
+//                        print("Error: ", error.localizedDescription)
+//                        return
+//                    }
+//                }
             } else {
                 dismissLoading(loadingVC: loadingVC)
                 BannerManager.showMessage(messageText: "Error", messageSubtitle: "Due to insufficient balance, Transaction failed.", style: .danger)

@@ -1,4 +1,6 @@
 import UIKit
+import AWSPluginsCore
+import Amplify
 import MarqueeLabel
 
 class DashboardViewController: UIViewController {
@@ -8,6 +10,7 @@ class DashboardViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
     
+    var currentUser: User?
     let collectionViewCellMargin: CGFloat = 16
     
     var collectionViewCellSize: CGSize {
@@ -30,13 +33,32 @@ class DashboardViewController: UIViewController {
         
     }
     
+    //        let user = currentUser
+    //        allUsers = UserDefaults.standard.retrieveUsers()
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let user = currentUser
-        allUsers = UserDefaults.standard.retrieveUsers()
-        currentUser = allUsers.filter({$0.personalInfo == user!.personalInfo}).first
-        setupViews()
+        Task {
+            do {
+                let authUser = try await Amplify.Auth.getCurrentUser() // ❗ بدون optional
+                let userSub = authUser.userId
+                print("✅ userSub:", userSub)
+                
+                NetworkManager.shared.getUser(by: userSub) { result in
+                    switch result {
+                    case .success(let userFromServer):
+                        self.currentUser = userFromServer
+                        DispatchQueue.main.async {
+                            self.setupViews()
+                        }
+                    case .failure(let error):
+                        print("❌ خطا در دریافت کاربر:", error.localizedDescription)
+                    }
+                }
+            } catch {
+                print("❌ خطا در گرفتن کاربر از Amplify:", error.localizedDescription)
+            }
+        }
     }
 }
 

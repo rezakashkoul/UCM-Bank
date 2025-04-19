@@ -25,17 +25,18 @@
 		EB67974129E8A4500014E27B /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB67973F29E8A4500014E27B /* NetworkManager.swift */; };
 		EB6A97A929EC7EFF00E24B86 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6A97A829EC7EFF00E24B86 /* AlertManager.swift */; };
 		EB6DE1E029D88D9B00045F21 /* BannerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6DE1DF29D88D9B00045F21 /* BannerManager.swift */; };
-		EB91473C29C9F3C000B5E3F5 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB91473B29C9F3C000B5E3F5 /* RegisterViewController.swift */; };
+		EB91473C29C9F3C000B5E3F5 /* ContinueSignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB91473B29C9F3C000B5E3F5 /* ContinueSignupViewController.swift */; };
 		EBA0270B29F20D2F004931D2 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA0270A29F20D2F004931D2 /* Transaction.swift */; };
 		EBA0270D29F20D74004931D2 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA0270C29F20D74004931D2 /* Account.swift */; };
 		EBA0270F29F20DF2004931D2 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA0270E29F20DF2004931D2 /* Currency.swift */; };
 		EBA1B1B929E73F41004CEEC7 /* AddAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA1B1B829E73F41004CEEC7 /* AddAccountViewController.swift */; };
 		EBB6FE1B29E9B7D8000B5BDC /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB6FE1929E9B7D8000B5BDC /* CollectionViewCell.swift */; };
 		EBB6FE1C29E9B7D8000B5BDC /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBB6FE1A29E9B7D8000B5BDC /* CollectionViewCell.xib */; };
-		F74FB6F92D99041700B571BF /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74FB6F82D9903FF00B571BF /* DatabaseManager.swift */; };
 		F762EDBF29BA0676001D8490 /* NotificationBannerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F762EDBE29BA0676001D8490 /* NotificationBannerSwift */; };
 		F762EDC129BA077E001D8490 /* ValidationRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = F762EDC029BA077E001D8490 /* ValidationRules.swift */; };
 		F762EDC729BA285C001D8490 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F762EDC629BA285C001D8490 /* DashboardViewController.swift */; };
+		F77EBB292DAEC45C009D148E /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77EBB282DAEC454009D148E /* SignupViewController.swift */; };
+		F77EBB2B2DAF2D2F009D148E /* SignupEmailConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77EBB2A2DAF2D1D009D148E /* SignupEmailConfirmationViewController.swift */; };
 		F7877C7329B919AA00272DF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7877C7229B919AA00272DF4 /* AppDelegate.swift */; };
 		F7877C7529B919AA00272DF4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7877C7429B919AA00272DF4 /* SceneDelegate.swift */; };
 		F7877C7729B919AA00272DF4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7877C7629B919AA00272DF4 /* LoginViewController.swift */; };
@@ -44,9 +45,16 @@
 		F7877C7F29B919AB00272DF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7877C7D29B919AB00272DF4 /* LaunchScreen.storyboard */; };
 		F7877C8829B91B5C00272DF4 /* RxKeyboard in Frameworks */ = {isa = PBXBuildFile; productRef = F7877C8729B91B5C00272DF4 /* RxKeyboard */; };
 		F7877C8A29B9382900272DF4 /* UIKitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7877C8929B9382900272DF4 /* UIKitExtension.swift */; };
+		F79AA0DD2DADBD3D0018AF62 /* netfox in Frameworks */ = {isa = PBXBuildFile; productRef = F79AA0DC2DADBD3D0018AF62 /* netfox */; };
+		F79AA0E02DAE061C0018AF62 /* AWSCognitoAuthPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = F79AA0DF2DAE061C0018AF62 /* AWSCognitoAuthPlugin */; };
+		F79AA0E22DAE061C0018AF62 /* Amplify in Frameworks */ = {isa = PBXBuildFile; productRef = F79AA0E12DAE061C0018AF62 /* Amplify */; };
+		F79AA0E92DAE07900018AF62 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = F79AA0E82DAE07900018AF62 /* awsconfiguration.json */; };
+		F79AA0EA2DAE07900018AF62 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = F79AA0E72DAE07900018AF62 /* amplifyconfiguration.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		44CDFEB78AD7EB85E9663790 /* amplifyconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
+		5DF8E5C87C767778559DF1A5 /* awsconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
 		EB10408529C098070064F467 /* SlideUpAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideUpAnimator.swift; sourceTree = "<group>"; };
 		EB10408729C099540064F467 /* SecurityQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityQuestionViewController.swift; sourceTree = "<group>"; };
 		EB10408A29C0AC7F0064F467 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -64,17 +72,18 @@
 		EB67973F29E8A4500014E27B /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		EB6A97A829EC7EFF00E24B86 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		EB6DE1DF29D88D9B00045F21 /* BannerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerManager.swift; sourceTree = "<group>"; };
-		EB91473B29C9F3C000B5E3F5 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		EB91473B29C9F3C000B5E3F5 /* ContinueSignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContinueSignupViewController.swift; sourceTree = "<group>"; };
 		EBA0270A29F20D2F004931D2 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		EBA0270C29F20D74004931D2 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		EBA0270E29F20DF2004931D2 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		EBA1B1B829E73F41004CEEC7 /* AddAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountViewController.swift; sourceTree = "<group>"; };
 		EBB6FE1929E9B7D8000B5BDC /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		EBB6FE1A29E9B7D8000B5BDC /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
-		F74FB6F82D9903FF00B571BF /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		F762EDC029BA077E001D8490 /* ValidationRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationRules.swift; sourceTree = "<group>"; };
 		F762EDC629BA285C001D8490 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		F77262492D979F09003018DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F77EBB282DAEC454009D148E /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		F77EBB2A2DAF2D1D009D148E /* SignupEmailConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupEmailConfirmationViewController.swift; sourceTree = "<group>"; };
 		F7877C6F29B919AA00272DF4 /* UCM Bank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UCM Bank.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7877C7229B919AA00272DF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F7877C7429B919AA00272DF4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +92,8 @@
 		F7877C7B29B919AB00272DF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F7877C7E29B919AB00272DF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F7877C8929B9382900272DF4 /* UIKitExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitExtension.swift; sourceTree = "<group>"; };
+		F79AA0E72DAE07900018AF62 /* amplifyconfiguration.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
+		F79AA0E82DAE07900018AF62 /* awsconfiguration.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,7 +102,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7877C8829B91B5C00272DF4 /* RxKeyboard in Frameworks */,
+				F79AA0E02DAE061C0018AF62 /* AWSCognitoAuthPlugin in Frameworks */,
 				F762EDBF29BA0676001D8490 /* NotificationBannerSwift in Frameworks */,
+				F79AA0E22DAE061C0018AF62 /* Amplify in Frameworks */,
+				F79AA0DD2DADBD3D0018AF62 /* netfox in Frameworks */,
 				EB10408429C087650064F467 /* MarqueeLabel in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -99,13 +113,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		EB10408929C0995A0064F467 /* Login and Register */ = {
+		5FBD50AD0CA8855CE1DAE772 /* AmplifyConfig */ = {
+			isa = PBXGroup;
+			children = (
+				5DF8E5C87C767778559DF1A5 /* awsconfiguration.json */,
+				44CDFEB78AD7EB85E9663790 /* amplifyconfiguration.json */,
+			);
+			name = AmplifyConfig;
+			sourceTree = "<group>";
+		};
+		EB10408929C0995A0064F467 /* Login and Signup */ = {
 			isa = PBXGroup;
 			children = (
 				F7877C7629B919AA00272DF4 /* LoginViewController.swift */,
-				EB91473B29C9F3C000B5E3F5 /* RegisterViewController.swift */,
+				F77EBB282DAEC454009D148E /* SignupViewController.swift */,
+				F77EBB2A2DAF2D1D009D148E /* SignupEmailConfirmationViewController.swift */,
+				EB91473B29C9F3C000B5E3F5 /* ContinueSignupViewController.swift */,
 			);
-			path = "Login and Register";
+			path = "Login and Signup";
 			sourceTree = "<group>";
 		};
 		EB10408C29C0ACB10064F467 /* User Model */ = {
@@ -122,8 +147,8 @@
 		EB10408F29C0B29E0064F467 /* Security */ = {
 			isa = PBXGroup;
 			children = (
-				EB10408D29C0B26F0064F467 /* ChangePasswordViewController.swift */,
 				EB10408729C099540064F467 /* SecurityQuestionViewController.swift */,
+				EB10408D29C0B26F0064F467 /* ChangePasswordViewController.swift */,
 			);
 			path = Security;
 			sourceTree = "<group>";
@@ -163,7 +188,6 @@
 			children = (
 				EB67973E29E8A4500014E27B /* Network Model.swift */,
 				EB67973F29E8A4500014E27B /* NetworkManager.swift */,
-				F74FB6F82D9903FF00B571BF /* DatabaseManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -194,6 +218,7 @@
 			children = (
 				F7877C7129B919AA00272DF4 /* UCM Bank */,
 				F7877C7029B919AA00272DF4 /* Products */,
+				5FBD50AD0CA8855CE1DAE772 /* AmplifyConfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -219,6 +244,8 @@
 				F762EDC229BA0786001D8490 /* Helpers */,
 				F7877C7829B919AA00272DF4 /* Main.storyboard */,
 				F7877C7B29B919AB00272DF4 /* Assets.xcassets */,
+				F79AA0E72DAE07900018AF62 /* amplifyconfiguration.json */,
+				F79AA0E82DAE07900018AF62 /* awsconfiguration.json */,
 				F77262492D979F09003018DF /* Info.plist */,
 				F7877C7D29B919AB00272DF4 /* LaunchScreen.storyboard */,
 			);
@@ -238,7 +265,7 @@
 		F7877C8C29B938E000272DF4 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				EB10408929C0995A0064F467 /* Login and Register */,
+				EB10408929C0995A0064F467 /* Login and Signup */,
 				EB10408F29C0B29E0064F467 /* Security */,
 				EB10409229C0BF240064F467 /* Dashboard */,
 			);
@@ -265,6 +292,9 @@
 				F7877C8729B91B5C00272DF4 /* RxKeyboard */,
 				F762EDBE29BA0676001D8490 /* NotificationBannerSwift */,
 				EB10408329C087650064F467 /* MarqueeLabel */,
+				F79AA0DC2DADBD3D0018AF62 /* netfox */,
+				F79AA0DF2DAE061C0018AF62 /* AWSCognitoAuthPlugin */,
+				F79AA0E12DAE061C0018AF62 /* Amplify */,
 			);
 			productName = "Atlas Bank";
 			productReference = F7877C6F29B919AA00272DF4 /* UCM Bank.app */;
@@ -298,6 +328,8 @@
 				F7877C8629B91B5C00272DF4 /* XCRemoteSwiftPackageReference "RxKeyboard" */,
 				F762EDBD29BA0676001D8490 /* XCRemoteSwiftPackageReference "NotificationBanner" */,
 				EB10408229C087650064F467 /* XCRemoteSwiftPackageReference "MarqueeLabel" */,
+				F79AA0DB2DADBD3D0018AF62 /* XCRemoteSwiftPackageReference "netfox" */,
+				F79AA0DE2DAE061C0018AF62 /* XCRemoteSwiftPackageReference "amplify-swift" */,
 			);
 			productRefGroup = F7877C7029B919AA00272DF4 /* Products */;
 			projectDirPath = "";
@@ -316,6 +348,8 @@
 				F7877C7F29B919AB00272DF4 /* LaunchScreen.storyboard in Resources */,
 				EBB6FE1C29E9B7D8000B5BDC /* CollectionViewCell.xib in Resources */,
 				EB67973029E8431C0014E27B /* TableViewCell.xib in Resources */,
+				F79AA0E92DAE07900018AF62 /* awsconfiguration.json in Resources */,
+				F79AA0EA2DAE07900018AF62 /* amplifyconfiguration.json in Resources */,
 				F7877C7C29B919AB00272DF4 /* Assets.xcassets in Resources */,
 				F7877C7A29B919AA00272DF4 /* Main.storyboard in Resources */,
 			);
@@ -336,13 +370,13 @@
 				EB67972F29E8431C0014E27B /* TableViewCell.swift in Sources */,
 				EBB6FE1B29E9B7D8000B5BDC /* CollectionViewCell.swift in Sources */,
 				EB172C1B29F34892000B3539 /* LoadingViewController.swift in Sources */,
-				F74FB6F92D99041700B571BF /* DatabaseManager.swift in Sources */,
 				F762EDC729BA285C001D8490 /* DashboardViewController.swift in Sources */,
 				F7877C7329B919AA00272DF4 /* AppDelegate.swift in Sources */,
 				EBA0270F29F20DF2004931D2 /* Currency.swift in Sources */,
 				EB67972329E82BE60014E27B /* BillViewController.swift in Sources */,
+				F77EBB2B2DAF2D2F009D148E /* SignupEmailConfirmationViewController.swift in Sources */,
 				EB67974029E8A4500014E27B /* Network Model.swift in Sources */,
-				EB91473C29C9F3C000B5E3F5 /* RegisterViewController.swift in Sources */,
+				EB91473C29C9F3C000B5E3F5 /* ContinueSignupViewController.swift in Sources */,
 				EB6DE1E029D88D9B00045F21 /* BannerManager.swift in Sources */,
 				EB10408E29C0B26F0064F467 /* ChangePasswordViewController.swift in Sources */,
 				EB67974129E8A4500014E27B /* NetworkManager.swift in Sources */,
@@ -356,6 +390,7 @@
 				F7877C7529B919AA00272DF4 /* SceneDelegate.swift in Sources */,
 				EB10408629C098070064F467 /* SlideUpAnimator.swift in Sources */,
 				EB67972929E82CA70014E27B /* TransferMoneyViewController.swift in Sources */,
+				F77EBB292DAEC45C009D148E /* SignupViewController.swift in Sources */,
 				F7877C8A29B9382900272DF4 /* UIKitExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -610,6 +645,22 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		F79AA0DB2DADBD3D0018AF62 /* XCRemoteSwiftPackageReference "netfox" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kasketis/netfox";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.21.0;
+			};
+		};
+		F79AA0DE2DAE061C0018AF62 /* XCRemoteSwiftPackageReference "amplify-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/aws-amplify/amplify-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.46.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -627,6 +678,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F7877C8629B91B5C00272DF4 /* XCRemoteSwiftPackageReference "RxKeyboard" */;
 			productName = RxKeyboard;
+		};
+		F79AA0DC2DADBD3D0018AF62 /* netfox */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F79AA0DB2DADBD3D0018AF62 /* XCRemoteSwiftPackageReference "netfox" */;
+			productName = netfox;
+		};
+		F79AA0DF2DAE061C0018AF62 /* AWSCognitoAuthPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F79AA0DE2DAE061C0018AF62 /* XCRemoteSwiftPackageReference "amplify-swift" */;
+			productName = AWSCognitoAuthPlugin;
+		};
+		F79AA0E12DAE061C0018AF62 /* Amplify */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F79AA0DE2DAE061C0018AF62 /* XCRemoteSwiftPackageReference "amplify-swift" */;
+			productName = Amplify;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

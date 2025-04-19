@@ -1,5 +1,42 @@
 {
+  "originHash" : "f40bb2c2d88e0850615cea7ed88f77394486dd6e8e7504b510498f0181216d13",
   "pins" : [
+    {
+      "identity" : "amplify-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/aws-amplify/amplify-swift",
+      "state" : {
+        "revision" : "e881df5510c20a990863662e981d381cf8ee4a60",
+        "version" : "2.46.2"
+      }
+    },
+    {
+      "identity" : "amplify-swift-utils-notifications",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/aws-amplify/amplify-swift-utils-notifications.git",
+      "state" : {
+        "revision" : "959eec669ba97c7d923b963c3e66ca8a0b2737f6",
+        "version" : "1.1.1"
+      }
+    },
+    {
+      "identity" : "aws-crt-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/awslabs/aws-crt-swift",
+      "state" : {
+        "revision" : "dd17a98750b6182edacd6e8f0c30aa289c472b22",
+        "version" : "0.40.0"
+      }
+    },
+    {
+      "identity" : "aws-sdk-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/awslabs/aws-sdk-swift",
+      "state" : {
+        "revision" : "9ad12684f6cb9c9b60e840c051a2bba604024650",
+        "version" : "1.0.69"
+      }
+    },
     {
       "identity" : "marqueelabel",
       "kind" : "remoteSourceControl",
@@ -7,6 +44,15 @@
       "state" : {
         "revision" : "f2c72a5f8568579dade6350dc26a482076d3d346",
         "version" : "4.3.0"
+      }
+    },
+    {
+      "identity" : "netfox",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kasketis/netfox",
+      "state" : {
+        "revision" : "557576032736fd3140422baefb68b8f76c55088f",
+        "version" : "1.21.0"
       }
     },
     {
@@ -37,6 +83,15 @@
       }
     },
     {
+      "identity" : "smithy-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/smithy-lang/smithy-swift",
+      "state" : {
+        "revision" : "402f091374dcf72c1e7ed43af10e3ee7e634fad8",
+        "version" : "0.106.0"
+      }
+    },
+    {
       "identity" : "snapkit",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SnapKit/SnapKit",
@@ -44,7 +99,25 @@
         "revision" : "f222cbdf325885926566172f6f5f06af95473158",
         "version" : "5.6.0"
       }
+    },
+    {
+      "identity" : "sqlite.swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/stephencelis/SQLite.swift.git",
+      "state" : {
+        "revision" : "a95fc6df17d108bd99210db5e8a9bac90fe984b8",
+        "version" : "0.15.3"
+      }
+    },
+    {
+      "identity" : "swift-log",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-log.git",
+      "state" : {
+        "revision" : "3d8596ed08bd13520157f0355e35caed215ffbfa",
+        "version" : "1.6.3"
+      }
     }
   ],
-  "version" : 2
+  "version" : 3
 }

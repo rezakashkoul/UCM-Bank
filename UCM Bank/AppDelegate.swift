@@ -1,4 +1,7 @@
 import UIKit
+import Amplify
+import AWSCognitoAuthPlugin
+import netfox
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -10,6 +13,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        configureAmplify()
+        NFX.sharedInstance().start()
         window?.overrideUserInterfaceStyle = .light
         window?.tintColor = UIColor.systemPink
         
@@ -30,6 +35,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
+}
 
+// - MARK: - Additional Setup Functions
+extension AppDelegate {
+    
+    private func configureAmplify() {
+        do {
+            try Amplify.add(plugin: AWSCognitoAuthPlugin())
+            try Amplify.configure()
+            print("✅ Amplify configured with Cognito Auth plugin")
+        } catch {
+            print("❌ Failed to initialize Amplify: \(error)")
+        }
+    }
 }
 
