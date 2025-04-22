@@ -60,14 +60,6 @@ class DashboardViewController: UIViewController {
             }
         }
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        Task {
-            await NetworkManager.shared.signOutIfNeeded()
-        }
-    }
 }
 
 //MARK: - Setup Functions
