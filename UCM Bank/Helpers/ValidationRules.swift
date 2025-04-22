@@ -1,7 +1,7 @@
 import Foundation
 import NotificationBannerSwift
 
-enum ValidationRule { case none, username, password, textName, ssn, email, tel, unitNumber, streetNumber, postalCode, province, bankID, amount }
+enum ValidationRule { case none, username, password, textName, ssn, email, phone, unitNumber, streetNumber, postalCode, province, bankID, amount }
 
 extension ValidationRule {
     
@@ -18,7 +18,7 @@ extension ValidationRule {
             return isValidSSN(text: text, shouldShowError: shouldShowError)
         case .email:
             return isValidEmail(text: text, shouldShowError: shouldShowError)
-        case .tel:
+        case .phone:
             return isValidTel(text: text, shouldShowError: shouldShowError)
         case .unitNumber:
             return isValidUnitNumber(text: text, shouldShowError: shouldShowError)
@@ -94,7 +94,7 @@ extension ValidationRule {
             return true
         } else {
             if shouldShowError {
-                BannerManager.showMessage(messageText: "Error", messageSubtitle: "Tel number is not valid", style: .danger)
+                BannerManager.showMessage(messageText: "Error", messageSubtitle: "Phone number is not valid", style: .danger)
             }
             return false
         }

@@ -122,6 +122,7 @@ private extension SignupViewController {
 
 // MARK: - Actions
 private extension SignupViewController {
+    
     func isSignupValid() -> Bool {
         ValidationRule.username.isValidUsername(text: usernameTextField.text!, shouldShowError: false) &&
         ValidationRule.password.isValidPassword(text: passwordTextField.text!, shouldShowError: false) &&
@@ -139,7 +140,7 @@ private extension SignupViewController {
             return
         }
 
-        let username = usernameTextField.text!
+        let username = usernameTextField.text!.lowercased()
         let password = passwordTextField.text!
         let email = emailTextField.text!
 

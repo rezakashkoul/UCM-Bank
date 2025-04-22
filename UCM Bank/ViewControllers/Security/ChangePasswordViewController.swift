@@ -11,6 +11,7 @@ class ChangePasswordViewController: UIViewController {
     @IBOutlet weak var submitButton: UIButton!
 
     var disposeBag = DisposeBag()
+    var username = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,10 +34,10 @@ private extension ChangePasswordViewController {
     func setupViews() {
         handleKeyboardVisibility()
         submitButton.dropShadowAndCornerRadius(.regular)
-        password1TextField.delegate = self
-        password2TextField.delegate = self
-        password1TextField.addDoneToolbar()
-        password2TextField.addDoneToolbar()
+        [password1TextField, password2TextField].forEach {
+            $0?.delegate = self
+            $0?.addDoneToolbar()
+        }
         password1TextField.becomeFirstResponder()
     }
 
@@ -71,31 +72,30 @@ private extension ChangePasswordViewController {
             return
         }
 
-        // ✅ Use rememberedUsername from UserDefaults (if available)
-        let username = UserDefaults.standard.string(forKey: "rememberedUsername")?.lowercased()
-
-        guard let safeUsername = username, !safeUsername.isEmpty else {
-            BannerManager.showMessage(messageText: "Error", messageSubtitle: "Username not found. Please login again.", style: .danger)
+        guard !username.isEmpty else {
+            BannerManager.showMessage(messageText: "Error", messageSubtitle: "Username not available. Please restart the flow.", style: .danger)
             goToLoginPage()
             return
         }
 
         submitButton.isEnabled = false
 
-        NetworkManager.shared.changePassword(username: safeUsername, newPassword: password1) { [weak self] result in
+        NetworkManager.shared.resetCognitoPassword(username: username, newPassword: password1) { [weak self] result in
             guard let self = self else { return }
-
             DispatchQueue.main.async {
                 self.submitButton.isEnabled = true
 
                 switch result {
-                case .success(let success):
-                    if success {
-                        BannerManager.showMessage(messageText: "Success", messageSubtitle: "Password changed. Please login again.", style: .success)
+                case .success(let response):
+                    if let message = response["message"] as? String,
+                       message.lowercased().contains("password updated successfully") {
+                        BannerManager.showMessage(messageText: "Success", messageSubtitle: message, style: .success)
                         self.goToLoginPage()
                     } else {
-                        BannerManager.showMessage(messageText: "Error", messageSubtitle: "Password change unsuccessful.", style: .danger)
+                        let subtitle = response["message"] as? String ?? "Password update failed."
+                        BannerManager.showMessage(messageText: "Error", messageSubtitle: subtitle, style: .danger)
                     }
+
                 case .failure(let error):
                     BannerManager.showMessage(messageText: "Error", messageSubtitle: error.localizedDescription, style: .danger)
                 }
@@ -113,13 +113,11 @@ private extension ChangePasswordViewController {
 // MARK: - UITextFieldDelegate
 extension ChangePasswordViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        switch textField {
-        case password1TextField:
+        if textField == password1TextField {
             password2TextField.becomeFirstResponder()
-        case password2TextField:
+        } else {
             textField.resignFirstResponder()
             submitAction()
-        default: break
         }
         return true
     }

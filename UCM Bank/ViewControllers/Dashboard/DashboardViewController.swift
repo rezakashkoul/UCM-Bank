@@ -40,11 +40,11 @@ class DashboardViewController: UIViewController {
         
         Task {
             do {
-                let authUser = try await Amplify.Auth.getCurrentUser() // ❗ بدون optional
-                let userSub = authUser.userId
-                print("✅ userSub:", userSub)
+                let authUser = try await Amplify.Auth.getCurrentUser()
+                let username = authUser.username
+                print("✅ username:", username)
                 
-                NetworkManager.shared.getUser(by: userSub) { result in
+                NetworkManager.shared.getUser(by: username) { result in
                     switch result {
                     case .success(let userFromServer):
                         self.currentUser = userFromServer
@@ -58,6 +58,14 @@ class DashboardViewController: UIViewController {
             } catch {
                 print("❌ خطا در گرفتن کاربر از Amplify:", error.localizedDescription)
             }
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        Task {
+            await NetworkManager.shared.signOutIfNeeded()
         }
     }
 }
@@ -98,9 +106,37 @@ private extension DashboardViewController {
     
     @objc private func exitButton() {
         DispatchQueue.main.async {
-            AlertManager.shared.showAlert(parent: self, title: "Warning", body: "You are going to log out. \n Are you sure?", buttonTitles: ["Log out"], style: .alert) { buttonIndex in
+            AlertManager.shared.showAlert(
+                parent: self,
+                title: "Warning",
+                body: "You are going to log out. \n Are you sure?",
+                buttonTitles: ["Log out"],
+                style: .alert
+            ) { buttonIndex in
                 if buttonIndex == 0 {
-                    self.tabBarController?.navigationController?.popToRootViewController(animated: true)
+                    Task {
+                        do {
+                            let options = AuthSignOutRequest.Options(globalSignOut: true)
+                            try await Amplify.Auth.signOut(options: options)
+
+                            DispatchQueue.main.async {
+                                BannerManager.showMessage(
+                                    messageText: "Logged Out",
+                                    messageSubtitle: "You have been signed out successfully.",
+                                    style: .info
+                                )
+                                self.tabBarController?.navigationController?.popToRootViewController(animated: true)
+                            }
+                        } catch {
+                            DispatchQueue.main.async {
+                                BannerManager.showMessage(
+                                    messageText: "Error",
+                                    messageSubtitle: "Failed to sign out: \(error.localizedDescription)",
+                                    style: .danger
+                                )
+                            }
+                        }
+                    }
                 }
             }
         }

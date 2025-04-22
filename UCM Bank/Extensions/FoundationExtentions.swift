@@ -30,3 +30,12 @@ extension Double {
         }
     }
 }
+
+extension String {
+    var sanitized: String {
+        return self.trimmingCharacters(in: .whitespacesAndNewlines)
+                   .components(separatedBy: .controlCharacters)
+                   .joined()
+                   .lowercased()
+    }
+}

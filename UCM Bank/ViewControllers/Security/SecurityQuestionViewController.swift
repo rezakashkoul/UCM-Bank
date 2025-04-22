@@ -74,7 +74,7 @@ private extension SecurityQuestionViewController {
     }
 
     func submitAction() {
-        let enteredUsername = usernameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines).lowercased() ?? ""
+        let enteredUsername = usernameTextField.text?.sanitized ?? ""
         let actualUsername = isUserSigningUp ? username : enteredUsername
 
         let answer1 = question1TextField.text ?? ""
@@ -96,9 +96,19 @@ private extension SecurityQuestionViewController {
                     return
                 }
 
-                // 🔒 Backend answer verification should be here
-                DispatchQueue.main.async {
-                    self.showChangePasswordViewController()
+                NetworkManager.shared.validateSecurityAnswers(username: actualUsername, answer1: answer1, answer2: answer2, answer3: answer3) { result in
+                    DispatchQueue.main.async {
+                        switch result {
+                        case .success(let match):
+                            if match {
+                                self.showChangePasswordViewController()
+                            } else {
+                                BannerManager.showMessage(messageText: "Incorrect", messageSubtitle: "Security answers do not match.", style: .danger)
+                            }
+                        case .failure(let error):
+                            BannerManager.showMessage(messageText: "Error", messageSubtitle: error.localizedDescription, style: .danger)
+                        }
+                    }
                 }
             }
         }
@@ -125,6 +135,7 @@ private extension SecurityQuestionViewController {
     func showChangePasswordViewController() {
         guard let vc = storyboard?.instantiateViewController(withIdentifier: "ChangePasswordViewController") as? ChangePasswordViewController else { return }
         vc.isModalInPresentation = true
+        vc.username = usernameTextField.text!
         present(vc, animated: true)
     }
 

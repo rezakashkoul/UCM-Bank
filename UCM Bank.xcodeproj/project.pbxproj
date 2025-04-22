@@ -48,8 +48,8 @@
 		F79AA0DD2DADBD3D0018AF62 /* netfox in Frameworks */ = {isa = PBXBuildFile; productRef = F79AA0DC2DADBD3D0018AF62 /* netfox */; };
 		F79AA0E02DAE061C0018AF62 /* AWSCognitoAuthPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = F79AA0DF2DAE061C0018AF62 /* AWSCognitoAuthPlugin */; };
 		F79AA0E22DAE061C0018AF62 /* Amplify in Frameworks */ = {isa = PBXBuildFile; productRef = F79AA0E12DAE061C0018AF62 /* Amplify */; };
-		F79AA0E92DAE07900018AF62 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = F79AA0E82DAE07900018AF62 /* awsconfiguration.json */; };
-		F79AA0EA2DAE07900018AF62 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = F79AA0E72DAE07900018AF62 /* amplifyconfiguration.json */; };
+		F7EF614C2DB63E830059A458 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = F7EF614B2DB63E830059A458 /* awsconfiguration.json */; };
+		F7EF614D2DB63E830059A458 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = F7EF614A2DB63E830059A458 /* amplifyconfiguration.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,8 +92,8 @@
 		F7877C7B29B919AB00272DF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F7877C7E29B919AB00272DF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F7877C8929B9382900272DF4 /* UIKitExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitExtension.swift; sourceTree = "<group>"; };
-		F79AA0E72DAE07900018AF62 /* amplifyconfiguration.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
-		F79AA0E82DAE07900018AF62 /* awsconfiguration.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
+		F7EF614A2DB63E830059A458 /* amplifyconfiguration.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
+		F7EF614B2DB63E830059A458 /* awsconfiguration.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,8 +244,8 @@
 				F762EDC229BA0786001D8490 /* Helpers */,
 				F7877C7829B919AA00272DF4 /* Main.storyboard */,
 				F7877C7B29B919AB00272DF4 /* Assets.xcassets */,
-				F79AA0E72DAE07900018AF62 /* amplifyconfiguration.json */,
-				F79AA0E82DAE07900018AF62 /* awsconfiguration.json */,
+				F7EF614A2DB63E830059A458 /* amplifyconfiguration.json */,
+				F7EF614B2DB63E830059A458 /* awsconfiguration.json */,
 				F77262492D979F09003018DF /* Info.plist */,
 				F7877C7D29B919AB00272DF4 /* LaunchScreen.storyboard */,
 			);
@@ -346,10 +346,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7877C7F29B919AB00272DF4 /* LaunchScreen.storyboard in Resources */,
+				F7EF614C2DB63E830059A458 /* awsconfiguration.json in Resources */,
+				F7EF614D2DB63E830059A458 /* amplifyconfiguration.json in Resources */,
 				EBB6FE1C29E9B7D8000B5BDC /* CollectionViewCell.xib in Resources */,
 				EB67973029E8431C0014E27B /* TableViewCell.xib in Resources */,
-				F79AA0E92DAE07900018AF62 /* awsconfiguration.json in Resources */,
-				F79AA0EA2DAE07900018AF62 /* amplifyconfiguration.json in Resources */,
 				F7877C7C29B919AB00272DF4 /* Assets.xcassets in Resources */,
 				F7877C7A29B919AA00272DF4 /* Main.storyboard in Resources */,
 			);

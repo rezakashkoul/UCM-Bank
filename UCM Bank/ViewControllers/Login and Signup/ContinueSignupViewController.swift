@@ -93,6 +93,7 @@ private extension ContinueSignupViewController {
     }
 
     func submitAction() {
+        view.endEditing(true)
         guard areFieldsValid() else { return }
 
         let data: [String: Any] = [

@@ -4,7 +4,7 @@ var allUsers: [User] = []
 var currentUser: User?
 
 func initialUser()-> User {
-    let user = User(accounts: [], personalInfo: PersonalInfo(firstName: "",lastName: "",username: "",password: "",ssn: "",email: "",tel: "", address: Address(postalCode: "", unitNumber: "", streetNumber: "", streetName: "", province: ""), securityAnswers: []), payees: [])
+    let user = User(accounts: [], personalInfo: PersonalInfo(firstName: "",lastName: "",username: "",password: "",ssn: "",email: "",phone: "", address: Address(postalCode: "", unitNumber: "", streetNumber: "", streetName: "", province: ""), securityAnswers: []), payees: [])
     return user
 }
 

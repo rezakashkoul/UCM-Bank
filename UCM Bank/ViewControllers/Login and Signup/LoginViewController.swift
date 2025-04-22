@@ -13,7 +13,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var usernameTipLabel: MarqueeLabel!
     @IBOutlet weak var passwordTipLabel: MarqueeLabel!
-    @IBOutlet weak var rememberSwitch: UISwitch!
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var forgetButton: UIButton!
     @IBOutlet weak var signupButton: UIButton!
@@ -41,7 +40,9 @@ class LoginViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         scrollView.slideUpViews(delay: 0.1)
-        preloadRememberedUsername()
+        Task {
+            await NetworkManager.shared.signOutIfNeeded()
+        }
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -88,15 +89,6 @@ private extension LoginViewController {
         passwordTipLabel.text = "Password must include symbols and numbers."
     }
 
-    func preloadRememberedUsername() {
-        if let remembered = UserDefaults.standard.string(forKey: "rememberedUsername") {
-            usernameTextField.text = remembered
-            rememberSwitch.setOn(true, animated: false)
-        } else {
-            rememberSwitch.setOn(false, animated: false)
-        }
-    }
-
     func signInAction() {
         numberOfSignInAttempts += 1
 
@@ -135,7 +127,6 @@ private extension LoginViewController {
                     let result = try await Amplify.Auth.signIn(username: username, password: password)
                     if result.isSignedIn {
                         BannerManager.showMessage(messageText: "Success", messageSubtitle: "Logged in successfully", style: .success)
-                        self.handleRememberSwitch(for: username)
                         self.showTabbarController()
                     } else {
                         BannerManager.showMessage(messageText: "Next Step", messageSubtitle: "Additional auth needed.", style: .warning)
@@ -144,14 +135,6 @@ private extension LoginViewController {
                     BannerManager.showMessage(messageText: "Login Failed", messageSubtitle: error.localizedDescription, style: .danger)
                 }
             }
-        }
-    }
-
-    func handleRememberSwitch(for username: String) {
-        if rememberSwitch.isOn {
-            UserDefaults.standard.set(username, forKey: "rememberedUsername")
-        } else {
-            UserDefaults.standard.removeObject(forKey: "rememberedUsername")
         }
     }
 
@@ -187,26 +170,34 @@ extension LoginViewController: UITextFieldDelegate {
 }
 
 extension LoginViewController: SecurityQuestionViewControllerDelegate {
+    
     func setUsername(_ username: String) {
-        usernameTextField.text = username
+        usernameTextField.text = username.lowercased()
     }
 }
 
 extension LoginViewController {
+    
     func showTabbarController() {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "MainTabBarController")
-        navigationController?.pushViewController(vc!, animated: true)
+        DispatchQueue.main.async {
+            guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarController") else { return }
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
 
     func showSignupViewController() {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "SignupViewController") as! SignupViewController
-        navigationController?.pushViewController(vc, animated: true)
+        DispatchQueue.main.async {
+            guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "SignupViewController") as? SignupViewController else { return }
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
 
     func showResetPasswordViewController(shouldDismiss: Bool) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "SecurityQuestionViewController") as! SecurityQuestionViewController
-        vc.isModalInPresentation = !shouldDismiss
-        vc.isUserSigningUp = false
-        navigationController?.present(vc, animated: true)
+        DispatchQueue.main.async {
+            guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "SecurityQuestionViewController") as? SecurityQuestionViewController else { return }
+            vc.isModalInPresentation = !shouldDismiss
+            vc.isUserSigningUp = false
+            self.navigationController?.present(vc, animated: true)
+        }
     }
 }

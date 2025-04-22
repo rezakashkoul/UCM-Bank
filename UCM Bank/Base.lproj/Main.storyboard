@@ -81,22 +81,6 @@
                                             <action selector="signInButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ort-CO-VQX"/>
                                         </connections>
                                     </button>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="IAK-J2-mii" userLabel="Remember MeStack View">
-                                        <rect key="frame" x="20" y="399.66666666666663" width="139" height="31"/>
-                                        <subviews>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CSn-TI-YLA">
-                                                <rect key="frame" x="0.0" y="0.0" width="51" height="31"/>
-                                                <color key="tintColor" systemColor="systemPinkColor"/>
-                                                <color key="onTintColor" systemColor="systemPinkColor"/>
-                                            </switch>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="frO-OB-Agi">
-                                                <rect key="frame" x="57" y="8.3333333333333712" width="82" height="14.333333333333336"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="dzC-el-MyG" userLabel="Register Stack View">
                                         <rect key="frame" x="20" y="550.66666666666663" width="353" height="38.333333333333371"/>
                                         <subviews>
@@ -123,21 +107,18 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="cpn-dI-13T" firstAttribute="top" secondItem="XuQ-ap-7tT" secondAttribute="bottom" constant="20" id="410-Jx-0ma"/>
-                                    <constraint firstItem="IAK-J2-mii" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="XuQ-ap-7tT" secondAttribute="trailing" constant="-50" id="CHi-gB-hZH"/>
+                                    <constraint firstItem="XO4-XU-9Ek" firstAttribute="top" secondItem="cpn-dI-13T" secondAttribute="bottom" constant="170.99999999999994" id="C3v-UF-CCq"/>
                                     <constraint firstItem="GiC-jr-kaL" firstAttribute="width" secondItem="fzP-ta-Sg5" secondAttribute="width" id="DWh-bG-hSt"/>
-                                    <constraint firstAttribute="bottom" secondItem="dzC-el-MyG" secondAttribute="bottom" constant="20" id="K9w-OH-tC7"/>
                                     <constraint firstItem="cpn-dI-13T" firstAttribute="centerX" secondItem="fzP-ta-Sg5" secondAttribute="centerX" id="M9H-W4-nba"/>
                                     <constraint firstItem="dzC-el-MyG" firstAttribute="leading" secondItem="XuQ-ap-7tT" secondAttribute="leading" id="RAs-nu-BfL"/>
                                     <constraint firstAttribute="trailing" secondItem="XuQ-ap-7tT" secondAttribute="trailing" constant="20" id="Rm7-IS-9ij"/>
-                                    <constraint firstItem="dzC-el-MyG" firstAttribute="top" secondItem="IAK-J2-mii" secondAttribute="bottom" constant="120" id="TUe-Cs-AKd"/>
                                     <constraint firstItem="GiC-jr-kaL" firstAttribute="top" secondItem="fzP-ta-Sg5" secondAttribute="top" id="TX7-rR-RAR"/>
-                                    <constraint firstItem="IAK-J2-mii" firstAttribute="top" secondItem="cpn-dI-13T" secondAttribute="bottom" constant="20" id="YEJ-3V-4z2"/>
                                     <constraint firstItem="XuQ-ap-7tT" firstAttribute="top" secondItem="GiC-jr-kaL" secondAttribute="bottom" constant="20" id="cFG-AU-B72"/>
                                     <constraint firstItem="GiC-jr-kaL" firstAttribute="leading" secondItem="fzP-ta-Sg5" secondAttribute="leading" id="dhC-lz-9Io"/>
+                                    <constraint firstAttribute="bottom" secondItem="cpn-dI-13T" secondAttribute="bottom" constant="20" id="kMW-fu-t6B"/>
                                     <constraint firstItem="XuQ-ap-7tT" firstAttribute="leading" secondItem="fzP-ta-Sg5" secondAttribute="leading" constant="20" id="nmz-Wt-MGr"/>
                                     <constraint firstAttribute="trailing" secondItem="GiC-jr-kaL" secondAttribute="trailing" id="qDm-qL-33I"/>
                                     <constraint firstItem="dzC-el-MyG" firstAttribute="trailing" secondItem="XuQ-ap-7tT" secondAttribute="trailing" id="uoH-tj-gO2"/>
-                                    <constraint firstItem="IAK-J2-mii" firstAttribute="leading" secondItem="XuQ-ap-7tT" secondAttribute="leading" id="y8h-TQ-Klb"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -157,10 +138,9 @@
                         <outlet property="forgetButton" destination="3tj-l4-foz" id="BaP-KF-EBP"/>
                         <outlet property="passwordTextField" destination="RXd-8K-qYV" id="BIC-D6-ebd"/>
                         <outlet property="passwordTipLabel" destination="yVi-7B-26s" id="lf7-Wj-uKe"/>
-                        <outlet property="rememberSwitch" destination="CSn-TI-YLA" id="m9u-3p-LZk"/>
                         <outlet property="scrollView" destination="fzP-ta-Sg5" id="Wta-uA-R0t"/>
                         <outlet property="signInButton" destination="cpn-dI-13T" id="jfd-CL-t7N"/>
-                        <outlet property="signInStackViewBottomConstraint" destination="TUe-Cs-AKd" id="0K4-8D-vVd"/>
+                        <outlet property="signInStackViewBottomConstraint" destination="kMW-fu-t6B" id="8du-Ju-ybs"/>
                         <outlet property="signupButton" destination="XO4-XU-9Ek" id="uWq-xD-FwQ"/>
                         <outlet property="usernameTextField" destination="t88-3Y-mJd" id="UAz-4e-gPn"/>
                         <outlet property="usernameTipLabel" destination="0mE-ZM-3jr" id="SU8-17-v9i"/>
